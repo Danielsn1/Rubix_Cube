@@ -26,51 +26,32 @@ public class Face {
         int y = 0;
         // Hold the clr to set the tile
         Colors clr;
-        // A boolean flag to get out of the do loop
-        boolean flag;
         Random rand = new Random();
         for (Tile[] array : face) {
-            for (Tile tile : array) {
+            for (Tile ignored : array) {
                 do{
                     // Gets a random color from the Colors enum
                     clr = Colors.values()[rand.nextInt(Colors.values().length)];
-                    // This switch statement checks if the color can be the one randomly chosen
-                    switch (clr){
-                        case WHITE:
-                            if(max[0] <= whiteCount) flag = false;
-                        case RED:
-                            if(max[1] <= redCount) flag = false;
-                        case BLUE:
-                            if(max[2] <= blueCount) flag = false;
-                        case GREEN:
-                            if(max[3] <= greenCount) flag = false;
-                        case ORANGE:
-                            if(max[4] <= orangeCount) flag = false;
-                        case YELLOW:
-                            if(max[5] <= yellowCount) flag = false;
-                        default:
-                            flag = true;
-                    }
-                }while(flag);
+                }while(isColorValid(clr,max));
                 // This switch statement creates the tile with the corresponding color
                 switch (clr) {
                     case RED:
-                        tile = new Tile(Color.red, x, y);
+                        face[x][y] = new Tile(Color.red, x, y);
                         redCount++;
                     case BLUE:
-                        tile = new Tile(Color.blue, x, y);
+                        face[x][y] = new Tile(Color.blue, x, y);
                         blueCount++;
                     case GREEN:
-                        tile = new Tile(Color.green, x, y);
+                        face[x][y] = new Tile(Color.green, x, y);
                         greenCount++;
                     case WHITE:
-                        tile = new Tile(Color.white, x, y);
+                        face[x][y] = new Tile(Color.white, x, y);
                         whiteCount++;
                     case ORANGE:
-                        tile = new Tile(Color.orange, x, y);
+                        face[x][y] = new Tile(Color.orange, x, y);
                         orangeCount++;
                     case YELLOW:
-                        tile = new Tile(Color.yellow, x, y);
+                        face[x][y] = new Tile(Color.yellow, x, y);
                         yellowCount++;
                 }
                 x++;
@@ -83,12 +64,32 @@ public class Face {
         int x = 0;
         int y = 0;
         for (Tile[] array : face) {
-            for (Tile tile : array) {
-                tile = new Tile(clr, x, y);
+            for (Tile ignored : array) {
+                face[x][y] = new Tile(clr, x, y);
                 x++;
+                if(x > 2) x = 0;
             }
             y++;
         }
+    }
+    // This method checks if a color is valid for the face
+    private boolean isColorValid(Colors clr,int[] max) {
+        // This switch statement checks if the color can be the one randomly chosen
+        switch (clr) {
+            case WHITE:
+                if (max[0] <= whiteCount) return false;
+            case RED:
+                if (max[1] <= redCount) return false;
+            case BLUE:
+                if (max[2] <= blueCount) return false;
+            case GREEN:
+                if (max[3] <= greenCount) return false;
+            case ORANGE:
+                if (max[4] <= orangeCount) return false;
+            case YELLOW:
+                if (max[5] <= yellowCount) return false;
+        }
+        return true;
     }
 
     public Tile[][] getFace() {
@@ -117,5 +118,14 @@ public class Face {
 
     public int getRedCount() {
         return redCount;
+    }
+    public String toString(){
+        String result = "";
+        for (Tile[] array : face) {
+            for (Tile tile : array) {
+                result += tile + "\n";
+            }
+        }
+        return result;
     }
 }
