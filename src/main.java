@@ -9,6 +9,8 @@ public class main  {
         Face face = new Face(Color.white);
         System.out.println(face);
         Cube cube = new Cube();
+        System.out.println(cube + "\n\n");
+        cube.rightUp();
         System.out.println(cube);
     }
 }
