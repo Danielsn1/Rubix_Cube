@@ -9,11 +9,6 @@ public class Tile {
         position = new int[]{xpos,ypos};
     }
 
-    public Tile(Tile tl){
-        color = tl.getColor();
-        position = tl.getPosition();
-    }
-
     public Color getColor() {
         return color;
     }

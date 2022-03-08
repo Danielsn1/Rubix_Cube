@@ -11,11 +11,11 @@ public class main  {
         Cube cube = new Cube();
         System.out.println(cube + "\n\n");
 //        cube.rightUp();
-        cube.rightDown();
+        //cube.rightDown();
 //        cube.leftUp();
 //        cube.leftDown();
-//        cube.topRight();
-//        cube.topLeft();
+        //cube.topRight();
+       cube.topLeft();
 //        cube.bottomRight();
 //        cube.bottomLeft();
         System.out.println(cube);
