@@ -178,7 +178,7 @@ public class Cube {
 
     public String toString() {
         return "Cube{" +
-                "faces=" + faces +
-                '}';
+                "faces=\n" + faces +
+                "\n}";
     }
 }
