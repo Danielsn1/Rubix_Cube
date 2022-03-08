@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Cube {
     public HashMap<String,Face> faces;
@@ -127,6 +128,48 @@ public class Cube {
             }
         }
         return temp;
+    }
+
+    public void shuffle(){
+        Random rand = new Random();
+        for(int i = 0; i < 20; i++){
+            switch(rand.nextInt(8)){
+                case 0:
+                    rightUp();
+                    System.out.println("rightUp");
+                    break;
+                case 1:
+                    rightDown();
+                    System.out.println("rightDown");
+                    break;
+                case 2:
+                    leftUp();
+                    System.out.println("leftUp");
+                    break;
+                case 3:
+                    leftDown();
+                    System.out.println("leftDown");
+                    break;
+                case 4:
+                    topRight();
+                    System.out.println("topRight");
+                    break;
+                case 5:
+                    topLeft();
+                    System.out.println("topLeft");
+                    break;
+                case 6:
+                    bottomRight();
+                    System.out.println("bottomRight");
+                    break;
+                case 7:
+                    bottomLeft();
+                    System.out.println("bottomLeft");
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     public HashMap<String, Face> getFaces() {

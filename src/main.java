@@ -10,15 +10,7 @@ public class main  {
         System.out.println(face);
         Cube cube = new Cube();
         System.out.println(cube + "\n\n");
-//        cube.rightUp();
-        //cube.rightDown();
-//        cube.leftUp();
-//        cube.leftDown();
-        //cube.topRight();
-       cube.topLeft();
-//        cube.bottomRight();
-//        cube.bottomLeft();
+        cube.shuffle();
         System.out.println(cube);
-        System.out.println(cube.faces.keySet());
     }
 }
