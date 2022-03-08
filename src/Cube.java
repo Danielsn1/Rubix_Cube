@@ -159,7 +159,7 @@ public class Cube {
         faces.put("Back", back);
     }
 
-    private Face swapTile(Face f1, Face f2){
+    private Face swapTile(Face f1, Face f2, Direction dir, Orientation or, int pos){
         Face temp = new Face(Color.WHITE);
         for(int i = 0; i < f1.getFace().length; i++){
             temp.getFace()[i][2] = f2.getFace()[i][2];
