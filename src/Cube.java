@@ -22,27 +22,23 @@ public class Cube {
         Face back = faces.get("Back");
         Face bottom = faces.get("Bottom");
 
-        swapTile(swapTile(swapTile(swapTile(front,top),back),bottom),front);
-        //System.out.println("\n\n" + front + top + back + bottom + "\n\n");
+        swapTile(swapTile(swapTile(swapTile(front,top,Direction.FORWARD,Orientation.VERTICAL,2),
+                back,Direction.FORWARD,Orientation.VERTICAL,2),
+                bottom,Direction.FORWARD,Orientation.VERTICAL,2),
+                front,Direction.FORWARD,Orientation.VERTICAL,2);
+
     }
 
-    public void rightDown(){
+    public void rightDown() {
         Face front = faces.get("Front");
         Face top = faces.get("Top");
         Face back = faces.get("Back");
         Face bottom = faces.get("Bottom");
 
-        for(int i = 0; i < front.getFace().length; i++){
-            top.getFace()[i][2] = faces.get("Back").getFace()[i][2];
-            back.getFace()[i][2] = faces.get("Bottom").getFace()[i][2];
-            bottom.getFace()[i][2] = faces.get("Front").getFace()[i][2];
-            front.getFace()[i][2] = faces.get("Top").getFace()[i][2];
-        }
-
-        faces.put("Top", top);
-        faces.put("Front", front);
-        faces.put("Bottom", bottom);
-        faces.put("Back", back);
+        swapTile(swapTile(swapTile(swapTile(front, top, Direction.BACKWARD, Orientation.VERTICAL, 2),
+                back, Direction.BACKWARD, Orientation.VERTICAL, 2),
+                bottom, Direction.BACKWARD, Orientation.VERTICAL, 2),
+                front, Direction.BACKWARD, Orientation.VERTICAL, 2);
     }
 
     public void leftUp(){
@@ -51,17 +47,10 @@ public class Cube {
         Face back = faces.get("Back");
         Face bottom = faces.get("Bottom");
 
-        for(int i = 0; i < front.getFace().length; i++){
-            top.getFace()[i][0] = faces.get("Front").getFace()[i][0];
-            back.getFace()[i][0] = faces.get("Top").getFace()[i][0];
-            bottom.getFace()[i][0] = faces.get("Back").getFace()[i][0];
-            front.getFace()[i][0] = faces.get("Bottom").getFace()[i][0];
-        }
-
-        faces.put("Top", top);
-        faces.put("Front", front);
-        faces.put("Bottom", bottom);
-        faces.put("Back", back);
+        swapTile(swapTile(swapTile(swapTile(front, top, Direction.FORWARD, Orientation.VERTICAL, 0),
+                back, Direction.FORWARD, Orientation.VERTICAL, 0),
+                bottom, Direction.FORWARD, Orientation.VERTICAL, 0),
+                front, Direction.FORWARD, Orientation.VERTICAL, 0);
     }
 
     public void leftDown(){
@@ -70,17 +59,10 @@ public class Cube {
         Face back = faces.get("Back");
         Face bottom = faces.get("Bottom");
 
-        for(int i = 0; i < front.getFace().length; i++){
-            top.getFace()[i][0] = faces.get("Back").getFace()[i][0];
-            back.getFace()[i][0] = faces.get("Bottom").getFace()[i][0];
-            bottom.getFace()[i][0] = faces.get("Front").getFace()[i][0];
-            front.getFace()[i][0] = faces.get("Top").getFace()[i][0];
-        }
-
-        faces.put("Top", top);
-        faces.put("Front", front);
-        faces.put("Bottom", bottom);
-        faces.put("Back", back);
+        swapTile(swapTile(swapTile(swapTile(front,top,Direction.BACKWARD,Orientation.VERTICAL,0),
+                back,Direction.BACKWARD,Orientation.VERTICAL,0),
+                bottom,Direction.BACKWARD,Orientation.VERTICAL,0),
+                front,Direction.BACKWARD,Orientation.VERTICAL,0);
     }
 
     public void topRight(){
@@ -89,17 +71,10 @@ public class Cube {
         Face back = faces.get("Back");
         Face right = faces.get("Right");
 
-        for(int i = 0; i < front.getFace()[0].length; i++){
-            right.getFace()[0][i] = faces.get("Front").getFace()[0][i];
-            back.getFace()[0][i] = faces.get("Right").getFace()[0][i];
-            left.getFace()[0][i] = faces.get("Back").getFace()[0][i];
-            front.getFace()[0][i] = faces.get("Left").getFace()[0][i];
-        }
-
-        faces.put("Right", right);
-        faces.put("Front", front);
-        faces.put("Left", left);
-        faces.put("Back", back);
+        swapTile(swapTile(swapTile(swapTile(front,right,Direction.FORWARD,Orientation.HORIZONTAL,0),
+                back,Direction.FORWARD,Orientation.HORIZONTAL,0),
+                left,Direction.FORWARD,Orientation.HORIZONTAL,0),
+                front,Direction.FORWARD,Orientation.HORIZONTAL,0);
     }
 
     public void topLeft(){
@@ -108,17 +83,10 @@ public class Cube {
         Face back = faces.get("Back");
         Face right = faces.get("Right");
 
-        for(int i = 0; i < front.getFace()[0].length; i++){
-            right.getFace()[0][i] = faces.get("Back").getFace()[0][i];
-            back.getFace()[0][i] = faces.get("Left").getFace()[0][i];
-            left.getFace()[0][i] = faces.get("Front").getFace()[0][i];
-            front.getFace()[0][i] = faces.get("Right").getFace()[0][i];
-        }
-
-        faces.put("Right", right);
-        faces.put("Front", front);
-        faces.put("Left", left);
-        faces.put("Back", back);
+        swapTile(swapTile(swapTile(swapTile(front,right,Direction.BACKWARD,Orientation.HORIZONTAL,0),
+                back,Direction.BACKWARD,Orientation.HORIZONTAL,0),
+                left,Direction.BACKWARD,Orientation.HORIZONTAL,0),
+                front,Direction.BACKWARD,Orientation.HORIZONTAL,0);
     }
 
     public void bottomRight(){
@@ -127,17 +95,10 @@ public class Cube {
         Face back = faces.get("Back");
         Face right = faces.get("Right");
 
-        for(int i = 0; i < front.getFace()[2].length; i++){
-            right.getFace()[2][i] = faces.get("Front").getFace()[2][i];
-            back.getFace()[2][i] = faces.get("Right").getFace()[2][i];
-            left.getFace()[2][i] = faces.get("Back").getFace()[2][i];
-            front.getFace()[2][i] = faces.get("Left").getFace()[2][i];
-        }
-
-        faces.put("Right", right);
-        faces.put("Front", front);
-        faces.put("Left", left);
-        faces.put("Back", back);
+        swapTile(swapTile(swapTile(swapTile(front,right,Direction.FORWARD,Orientation.HORIZONTAL,2),
+                back,Direction.FORWARD,Orientation.HORIZONTAL,2),
+                left,Direction.FORWARD,Orientation.HORIZONTAL,2),
+                front,Direction.FORWARD,Orientation.HORIZONTAL,2);
     }
 
     public void bottomLeft(){
@@ -146,24 +107,38 @@ public class Cube {
         Face back = faces.get("Back");
         Face right = faces.get("Right");
 
-        for(int i = 0; i < front.getFace()[2].length; i++){
-            right.getFace()[2][i] = faces.get("Back").getFace()[2][i];
-            back.getFace()[2][i] = faces.get("Left").getFace()[2][i];
-            left.getFace()[2][i] = faces.get("Front").getFace()[2][i];
-            front.getFace()[2][i] = faces.get("Right").getFace()[2][i];
-        }
-
-        faces.put("Right", right);
-        faces.put("Front", front);
-        faces.put("Left", left);
-        faces.put("Back", back);
+        swapTile(swapTile(swapTile(swapTile(front,right,Direction.BACKWARD,Orientation.HORIZONTAL,2),
+                back,Direction.BACKWARD,Orientation.HORIZONTAL,2),
+                left,Direction.BACKWARD,Orientation.HORIZONTAL,2),
+                front,Direction.BACKWARD,Orientation.HORIZONTAL,2);
     }
 
     private Face swapTile(Face f1, Face f2, Direction dir, Orientation or, int pos){
         Face temp = new Face(Color.WHITE);
-        for(int i = 0; i < f1.getFace().length; i++){
-            temp.getFace()[i][2] = f2.getFace()[i][2];
-            f2.getFace()[i][2] = f1.getFace()[i][2];
+        if(or == Orientation.VERTICAL){
+            if(dir == Direction.FORWARD){
+                for(int i = 0; i < f1.getFace().length; i++){
+                    temp.getFace()[i][pos] = f2.getFace()[i][pos];
+                    f2.getFace()[i][pos] = f1.getFace()[i][pos];
+                }
+            }else {
+                for(int i = f1.getFace().length; i > 0; i--){
+                    temp.getFace()[i][pos] = f2.getFace()[i][pos];
+                    f2.getFace()[i][pos] = f1.getFace()[i][pos];
+                }
+            }
+        }else {
+            if(dir == Direction.FORWARD){
+                for(int i = 0; i < f1.getFace().length; i++){
+                    temp.getFace()[pos][i] = f2.getFace()[pos][i];
+                    f2.getFace()[pos][i] = f1.getFace()[pos][i];
+                }
+            }else {
+                for(int i = f1.getFace().length; i > 0; i--){
+                    temp.getFace()[pos][i] = f2.getFace()[pos][i];
+                    f2.getFace()[pos][i] = f1.getFace()[pos][i];
+                }
+            }
         }
         return temp;
     }
