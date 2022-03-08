@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class Cube {
@@ -24,21 +23,7 @@ public class Cube {
         Face bottom = faces.get("Bottom");
 
         swapTile(swapTile(swapTile(swapTile(front,top),back),bottom),front);
-
-        System.out.println("\n\n" + front + top + back + bottom + "\n\n");
-        faces.put("Top", top);
-        faces.put("Front", front);
-        faces.put("Bottom", bottom);
-        faces.put("Back", back);
-    }
-
-    private Face swapTile(Face f1, Face f2){
-        Face temp = new Face(Color.WHITE);
-        for(int i = 0; i < f1.getFace().length; i++){
-            temp.getFace()[i][2] = f2.getFace()[i][2];
-            f2.getFace()[i][2] = f1.getFace()[i][2];
-        }
-        return temp;
+        //System.out.println("\n\n" + front + top + back + bottom + "\n\n");
     }
 
     public void rightDown(){
@@ -174,7 +159,14 @@ public class Cube {
         faces.put("Back", back);
     }
 
-
+    private Face swapTile(Face f1, Face f2){
+        Face temp = new Face(Color.WHITE);
+        for(int i = 0; i < f1.getFace().length; i++){
+            temp.getFace()[i][2] = f2.getFace()[i][2];
+            f2.getFace()[i][2] = f1.getFace()[i][2];
+        }
+        return temp;
+    }
 
     public HashMap<String, Face> getFaces() {
         return faces;
