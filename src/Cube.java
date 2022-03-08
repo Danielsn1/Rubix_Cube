@@ -1,8 +1,11 @@
 import java.awt.*;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Cube {
     public HashMap<String,Face> faces;
+    private static String[] vertical  = {"Front", "Top", "Back", "Bottom"};
+    private static String[] horizontal = {"Front", "Left", "Back", "Right"};
 
     public Cube(){
         faces = new HashMap<>();
@@ -20,18 +23,22 @@ public class Cube {
         Face back = faces.get("Back");
         Face bottom = faces.get("Bottom");
 
-        for(int i = 0; i < front.getFace().length; i++){
-            top.getFace()[i][2] = faces.get("Front").getFace()[i][2];
-            back.getFace()[i][2] = faces.get("Top").getFace()[i][2];
-            bottom.getFace()[i][2] = faces.get("Back").getFace()[i][2];
-            front.getFace()[i][2] = faces.get("Bottom").getFace()[i][2];
-            System.out.println();
-        }
+        swapTile(swapTile(swapTile(swapTile(front,top),back),bottom),front);
+
         System.out.println("\n\n" + front + top + back + bottom + "\n\n");
         faces.put("Top", top);
         faces.put("Front", front);
         faces.put("Bottom", bottom);
         faces.put("Back", back);
+    }
+
+    private Face swapTile(Face f1, Face f2){
+        Face temp = new Face(Color.WHITE);
+        for(int i = 0; i < f1.getFace().length; i++){
+            temp.getFace()[i][2] = f2.getFace()[i][2];
+            f2.getFace()[i][2] = f1.getFace()[i][2];
+        }
+        return temp;
     }
 
     public void rightDown(){
@@ -166,6 +173,8 @@ public class Cube {
         faces.put("Left", left);
         faces.put("Back", back);
     }
+
+
 
     public HashMap<String, Face> getFaces() {
         return faces;

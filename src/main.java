@@ -12,5 +12,6 @@ public class main  {
         System.out.println(cube + "\n\n");
         cube.rightUp();
         System.out.println(cube);
+        System.out.println(cube.faces.keySet());
     }
 }

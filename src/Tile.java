@@ -1,12 +1,17 @@
 import java.awt.Color;
 
 public class Tile {
-    public Color color;
-    public int[] position;
+    private Color color;
+    private int[] position;
 
     public Tile(Color clr, Integer xpos, Integer ypos){
         color = clr;
         position = new int[]{xpos,ypos};
+    }
+
+    public Tile(Tile tl){
+        color = tl.getColor();
+        position = tl.getPosition();
     }
 
     public Color getColor() {

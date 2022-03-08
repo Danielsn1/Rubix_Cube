@@ -18,6 +18,11 @@ public class Face {
         face = new Tile[3][3];
         createFace(max);
     }
+    public Face(Face fce){
+        whiteCount = redCount = blueCount = greenCount = orangeCount = yellowCount = 0;
+        face = new Tile[3][3];
+        createFace(fce);
+    }
     // This method creates the random face with the given constraints.
     // the order of the colors in the array are white, red, blue, green, orange, yellow
     private void createFace(int[] max) {
@@ -57,6 +62,15 @@ public class Face {
                 x++;
             }
             y++;
+        }
+    }
+    // This creates a copy of the given face
+    private void createFace(Face fce){
+        for (int i = 0; i < face[0].length;i++){
+            for (int k = 0; k < face.length; k++){
+                Tile temp = fce.getFace()[i][k];
+                face[i][k] = new Tile(temp.getColor(),temp.getPosition()[0],temp.getPosition()[1]);
+            }
         }
     }
     // This version of create face creates a face with a single color
